@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mouhamadou SAMAKE | Développeur Java EE Senior</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-[#1a1d2e] text-white font-sans">
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-4 px-8">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="#home" class="text-2xl font-bold">
+        <span class="text-white">IT</span><span class="text-cyan-400">-TALIKO</span>
+      </a>
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex gap-8 text-sm font-medium">
+        <li><a href="#home"      class="nav-link active">Accueil</a></li>
+        <li><a href="#about"     class="nav-link">À Propos</a></li>
+        <li><a href="#skills"    class="nav-link">Compétences</a></li>
+        <li><a href="#services"  class="nav-link">Services</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#contact"   class="nav-link">Contact</a></li>
+      </ul>
+      <!-- Burger -->
+      <button id="burger" class="md:hidden text-white text-2xl focus:outline-none">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#212435] mt-4 rounded-xl px-6 py-4">
+      <ul class="flex flex-col gap-4 text-sm font-medium">
+        <li><a href="#home"      class="nav-link">Accueil</a></li>
+        <li><a href="#about"     class="nav-link">À Propos</a></li>
+        <li><a href="#skills"    class="nav-link">Compétences</a></li>
+        <li><a href="#services"  class="nav-link">Services</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#contact"   class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="min-h-screen flex items-center pt-20 px-8">
+    <div class="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-12">
+      <!-- Text -->
+      <div class="flex-1 animate-fade-in">
+        <p class="text-cyan-400 font-medium mb-2 tracking-widest text-sm uppercase">Bienvenue sur mon portfolio</p>
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">
+          Mouhamadou<br /><span class="text-cyan-400">SAMAKE</span>
+        </h1>
+        <h2 class="text-xl md:text-2xl font-semibold mb-2 text-gray-300">
+          Développeur <span class="text-cyan-400 typed-text"></span>
+        </h2>
+        <p class="text-gray-400 max-w-lg mt-4 leading-relaxed">
+          Développeur Java EE Senior avec 6+ ans d'expérience, spécialisé dans la conception d'API REST et d'applications web métier.
+          Expert Spring Boot, Spring Batch, Hibernate/JPA. Fondateur de <strong class="text-cyan-400">IT-TALIKO</strong>, mon auto-entreprise spécialisée en développement logiciel.
+        </p>
+        <!-- Social -->
+        <div class="flex gap-4 mt-6">
+          <a href="mailto:samake.mouhamadou@hotmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+          <a href="tel:0753341949"                       class="social-icon"><i class="fas fa-phone"></i></a>
+          <a href="https://www.linkedin.com/in/samake-mouhamadou-298098123/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"                                    class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <!-- CTA -->
+        <div class="flex gap-4 mt-8 flex-wrap">
+          <a href="#contact" class="btn-primary">Me Contacter</a>
+          <a href="CV_Mouhamadou_SAMAKE.pdf" download class="btn-outline">
+            <i class="fas fa-download mr-2"></i>Télécharger CV
+          </a>
+        </div>
+      </div>
+      <!-- Photo placeholder -->
+      <div class="flex-1 flex justify-center">
+        <div class="hero-avatar">
+          <div class="avatar-inner">
+            <img src="assets/img/SAMAKE_Mouhamadou4.jpg" alt="Mouhamadou SAMAKE" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="py-20 px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="section-title">À Propos <span class="text-cyan-400">de Moi</span></h2>
+
+      <div class="flex flex-col md:flex-row gap-12 items-start mt-12">
+        <!-- Card gauche -->
+        <div class="about-card flex-shrink-0">
+          <div class="about-avatar">
+            <img src="assets/img/SAMAKE_Mouhamadou4.jpg" alt="Mouhamadou SAMAKE" />
+          </div>
+          <h3 class="text-xl font-bold mt-4">Mouhamadou SAMAKE</h3>
+          <p class="text-cyan-400 text-sm mt-1">Développeur Java EE Senior</p>
+          <p class="text-gray-400 text-sm mt-1">Expert Spring Boot & API REST</p>
+          <p class="text-gray-400 text-sm mt-1">Auto-entrepreneur · IT-TALIKO</p>
+        </div>
+
+        <!-- Tabs contenu -->
+        <div class="flex-1">
+          <div class="flex gap-2 flex-wrap mb-8">
+            <button class="tab-btn active" data-tab="formation">Formation</button>
+            <button class="tab-btn" data-tab="experience">Expérience</button>
+            <button class="tab-btn" data-tab="details">Détails</button>
+          </div>
+
+          <!-- Formation -->
+          <div id="tab-formation" class="tab-content">
+            <div class="timeline-item">
+              <h4 class="text-cyan-400 font-semibold">Diplôme d'Ingénieur en Informatique</h4>
+              <p class="text-sm text-gray-400">Institut G4 — Marseille</p>
+              <p class="text-sm text-gray-500">2018</p>
+            </div>
+            <div class="timeline-item">
+              <h4 class="text-cyan-400 font-semibold">Licence Professionnelle NTI</h4>
+              <p class="text-sm text-gray-400">Aix-en-Provence</p>
+              <p class="text-sm text-gray-500">2016</p>
+            </div>
+            <div class="timeline-item">
+              <h4 class="text-cyan-400 font-semibold">BTS Systèmes Informatiques — Option Base de Données</h4>
+              <p class="text-sm text-gray-500">2015</p>
+            </div>
+          </div>
+
+          <!-- Expérience -->
+          <div id="tab-experience" class="tab-content hidden">
+            <div class="timeline-item">
+              <h4 class="text-cyan-400 font-semibold">Développeur Java EE Senior — SNCF CPRP</h4>
+              <p class="text-sm text-gray-400">Via IT-TALIKO / Inetum · Marseille</p>
+              <p class="text-sm text-gray-500">Juin 2024 — Présent</p>
+            </div>
+            <div class="timeline-item">
+              <h4 class="text-cyan-400 font-semibold">Développeur Java EE Full Stack — BNP Paribas Leasing</h4>
+              <p class="text-sm text-gray-400">Via Inetum / CAT-AMANIA · Marseille</p>
+              <p class="text-sm text-gray-500">Juin 2021 — Janvier 2022</p>
+            </div>
+            <div class="timeline-item">
+              <h4 class="text-cyan-400 font-semibold">Développeur Java EE Full Stack — AGIRC-ARRCO</h4>
+              <p class="text-sm text-gray-400">Via CAT-AMANIA · Aix-Marseille</p>
+              <p class="text-sm text-gray-500">Mars 2020 — Mars 2021</p>
+            </div>
+            <div class="timeline-item">
+              <h4 class="text-cyan-400 font-semibold">Ingénieur Java EE — Grand Port Maritime de Marseille</h4>
+              <p class="text-sm text-gray-400">Via Open Groupe · Marseille</p>
+              <p class="text-sm text-gray-500">Octobre 2018 — Mars 2020</p>
+            </div>
+            <div class="timeline-item">
+              <h4 class="text-cyan-400 font-semibold">Développeur Java EE — Infinity Space (Alternance)</h4>
+              <p class="text-sm text-gray-400">Projet WeCashUp · Marseille</p>
+              <p class="text-sm text-gray-500">Septembre 2016 — Août 2018</p>
+            </div>
+          </div>
+
+          <!-- Détails -->
+          <div id="tab-details" class="tab-content hidden">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="detail-item"><span class="text-gray-400">Nom :</span> <span>Mouhamadou SAMAKE</span></div>
+              <div class="detail-item"><span class="text-gray-400">Entreprise :</span> <span class="text-cyan-400">IT-TALIKO</span></div>
+              <div class="detail-item"><span class="text-gray-400">Email :</span> <span>samake.mouhamadou@hotmail.com</span></div>
+              <div class="detail-item"><span class="text-gray-400">Téléphone :</span> <span>07 53 34 19 49</span></div>
+              <div class="detail-item"><span class="text-gray-400">Localisation :</span> <span>Noves (13550)</span></div>
+              <div class="detail-item"><span class="text-gray-400">Expérience :</span> <span>6+ ans</span></div>
+              <div class="detail-item"><span class="text-gray-400">Langues :</span> <span>Français, Anglais</span></div>
+              <div class="detail-item"><span class="text-gray-400">Disponibilité :</span> <span class="text-green-400">Disponible</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section id="skills" class="py-20 px-8 bg-[#212435]">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="section-title">Mes <span class="text-cyan-400">Compétences</span></h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 mt-12">
+
+        <!-- Skill item -->
+        <div class="skill-item">
+          <div class="flex justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <i class="fab fa-java text-2xl text-cyan-400"></i>
+              <span class="font-semibold">Java EE / Spring Boot</span>
+            </div>
+            <span class="text-cyan-400 font-bold">95%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="flex justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-database text-2xl text-cyan-400"></i>
+              <span class="font-semibold">Hibernate / JPA / SQL</span>
+            </div>
+            <span class="text-cyan-400 font-bold">90%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="flex justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-plug text-2xl text-cyan-400"></i>
+              <span class="font-semibold">REST API / Microservices</span>
+            </div>
+            <span class="text-cyan-400 font-bold">92%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="flex justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-layer-group text-2xl text-cyan-400"></i>
+              <span class="font-semibold">Spring Batch</span>
+            </div>
+            <span class="text-cyan-400 font-bold">88%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="flex justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-server text-2xl text-cyan-400"></i>
+              <span class="font-semibold">PostgreSQL / Oracle / MySQL</span>
+            </div>
+            <span class="text-cyan-400 font-bold">85%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="flex justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <i class="fab fa-docker text-2xl text-cyan-400"></i>
+              <span class="font-semibold">Docker / Maven / Jenkins</span>
+            </div>
+            <span class="text-cyan-400 font-bold">80%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="flex justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <i class="fab fa-git-alt text-2xl text-cyan-400"></i>
+              <span class="font-semibold">Git / GitLab / CI-CD</span>
+            </div>
+            <span class="text-cyan-400 font-bold">85%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+        </div>
+
+        <div class="skill-item">
+          <div class="flex justify-between mb-2">
+            <div class="flex items-center gap-3">
+              <i class="fab fa-angular text-2xl text-cyan-400"></i>
+              <span class="font-semibold">AngularJS / Frontend</span>
+            </div>
+            <span class="text-cyan-400 font-bold">65%</span>
+          </div>
+          <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" class="py-20 px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="section-title">Mes <span class="text-cyan-400">Services</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-plug"></i></div>
+          <h3>Développement API REST</h3>
+          <p>Conception et développement d'API REST robustes et scalables avec Spring Boot, Swagger/OpenAPI. Gestion des flux métier, sécurité et performances.</p>
+          <a href="#contact" class="service-btn">Me Contacter</a>
+        </div>
+
+        <div class="service-card featured">
+          <div class="service-icon"><i class="fas fa-layer-group"></i></div>
+          <h3>Architecture Backend Java</h3>
+          <p>Conception d'architectures backend n-tiers, microservices et traitements batch (Spring Batch). Expérience dans les secteurs santé, finance et retraite.</p>
+          <a href="#contact" class="service-btn active">Me Contacter</a>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-database"></i></div>
+          <h3>Intégration & Migration SI</h3>
+          <p>Migration de systèmes d'information, intégration avec référentiels nationaux, optimisation SQL et traitements de volumes importants (10GB+).</p>
+          <a href="#contact" class="service-btn">Me Contacter</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTFOLIO ===== -->
+  <section id="portfolio" class="py-20 px-8 bg-[#212435]">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="section-title">Mes <span class="text-cyan-400">Projets</span></h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+
+        <!-- Projet public avec lien -->
+        <div class="project-card">
+          <div class="project-img bg-gradient-to-br from-cyan-800 to-[#1a1d2e] flex flex-col items-center justify-center gap-2">
+            <i class="fas fa-map-marker-alt text-5xl text-cyan-400"></i>
+            <span class="text-xs text-cyan-300 font-semibold tracking-widest uppercase">Live</span>
+          </div>
+          <div class="project-info">
+            <h4>Perfloc</h4>
+            <p>Java 21 · Angular · Spring Boot · Spring Data</p>
+            <div class="flex items-center justify-between mt-2">
+              <span class="badge">IT-TALIKO</span>
+              <a href="https://perfloc.com" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt mr-1"></i>Voir le site
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projet public avec lien -->
+        <div class="project-card">
+          <div class="project-img bg-gradient-to-br from-pink-900 to-[#1a1d2e] flex flex-col items-center justify-center gap-2">
+            <i class="fab fa-wordpress text-5xl text-cyan-400"></i>
+            <span class="text-xs text-cyan-300 font-semibold tracking-widest uppercase">Live</span>
+          </div>
+          <div class="project-info">
+            <h4>Madif Prestige</h4>
+            <p>WordPress · UI/UX · Développement Web</p>
+            <div class="flex items-center justify-between mt-2">
+              <span class="badge">IT-TALIKO</span>
+              <a href="https://madifprestige.com/fr/" target="_blank" class="project-link">
+                <i class="fas fa-external-link-alt mr-1"></i>Voir le site
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img bg-gradient-to-br from-cyan-900 to-[#1a1d2e] flex items-center justify-center">
+            <i class="fas fa-train text-5xl text-cyan-400"></i>
+          </div>
+          <div class="project-info">
+            <h4>ORDONNATEUR AGRÉÉ</h4>
+            <p>API REST · Spring Batch · Oracle</p>
+            <span class="badge">SNCF CPRP</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img bg-gradient-to-br from-blue-900 to-[#1a1d2e] flex items-center justify-center">
+            <i class="fas fa-file-alt text-5xl text-cyan-400"></i>
+          </div>
+          <div class="project-info">
+            <h4>GESTION FICHIER PIVOT</h4>
+            <p>Spring Batch · Transformation données</p>
+            <span class="badge">SNCF CPRP</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img bg-gradient-to-br from-green-900 to-[#1a1d2e] flex items-center justify-center">
+            <i class="fas fa-user-check text-5xl text-cyan-400"></i>
+          </div>
+          <div class="project-info">
+            <h4>KYX — Know Your Customer</h4>
+            <p>Spring Boot · AngularJS · Oracle</p>
+            <span class="badge">BNP Paribas</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img bg-gradient-to-br from-purple-900 to-[#1a1d2e] flex items-center justify-center">
+            <i class="fas fa-coins text-5xl text-cyan-400"></i>
+          </div>
+          <div class="project-info">
+            <h4>ALICE — Liquidation Retraite</h4>
+            <p>Spring MVC · Vaadin · PostgreSQL</p>
+            <span class="badge">AGIRC-ARRCO</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img bg-gradient-to-br from-yellow-900 to-[#1a1d2e] flex items-center justify-center">
+            <i class="fas fa-file-invoice-dollar text-5xl text-cyan-400"></i>
+          </div>
+          <div class="project-info">
+            <h4>PBS — Système de Facturation</h4>
+            <p>JSF · PrimeFaces · PostgreSQL · JMS</p>
+            <span class="badge">Grand Port de Marseille</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img bg-gradient-to-br from-red-900 to-[#1a1d2e] flex items-center justify-center">
+            <i class="fas fa-mobile-alt text-5xl text-cyan-400"></i>
+          </div>
+          <div class="project-info">
+            <h4>WeCashUp — Paiement Mobile</h4>
+            <p>Java EE · REST API · Cryptomonnaie</p>
+            <span class="badge">Infinity Space</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-img bg-gradient-to-br from-emerald-900 to-[#1a1d2e] flex flex-col items-center justify-center gap-2">
+            <i class="fas fa-heartbeat text-5xl text-cyan-400"></i>
+            <span class="text-xs text-cyan-300 font-semibold tracking-widest uppercase">En cours</span>
+          </div>
+          <div class="project-info">
+            <h4>Plateforme Médicale Afrique</h4>
+            <p>Java · Spring Boot · Gestion dossiers patients</p>
+            <div class="flex items-center justify-between mt-2">
+              <span class="badge">IT-TALIKO</span>
+              <span class="text-xs text-yellow-400 font-semibold"><i class="fas fa-code mr-1"></i>En développement</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="py-20 px-8">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="section-title">Me <span class="text-cyan-400">Contacter</span></h2>
+
+      <div class="flex flex-col md:flex-row gap-12 mt-12">
+
+        <!-- Infos -->
+        <div class="flex-1">
+          <div class="mb-6">
+            <p class="text-2xl font-bold mb-1">IT<span class="text-cyan-400">-TALIKO</span></p>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              <strong class="text-white">IT-TALIKO</strong> est mon auto-entreprise spécialisée en développement Java EE, Spring Boot et API REST.
+              Disponible pour des missions en régie ou au forfait, tous secteurs confondus.
+              Expérience confirmée notamment dans la santé, la finance, la retraite et l'industrie.
+            </p>
+          </div>
+          <div class="flex flex-col gap-4 mt-6">
+            <a href="tel:0753341949" class="contact-info-item">
+              <i class="fas fa-phone text-cyan-400"></i>
+              <span>07 53 34 19 49</span>
+            </a>
+            <a href="mailto:samake.mouhamadou@hotmail.com" class="contact-info-item">
+              <i class="fas fa-envelope text-cyan-400"></i>
+              <span>samake.mouhamadou@hotmail.com</span>
+            </a>
+            <div class="contact-info-item">
+              <i class="fas fa-map-marker-alt text-cyan-400"></i>
+              <span>Noves (13550), France</span>
+            </div>
+          </div>
+          <div class="flex gap-4 mt-8">
+            <a href="mailto:samake.mouhamadou@hotmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            <a href="tel:0753341949"                       class="social-icon"><i class="fas fa-phone"></i></a>
+            <a href="https://www.linkedin.com/in/samake-mouhamadou-298098123/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"                                    class="social-icon"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Formulaire -->
+        <div class="flex-1">
+          <form id="contact-form" class="flex flex-col gap-4">
+            <div class="flex gap-4">
+              <input type="text"  name="prenom"  placeholder="Prénom"   class="form-input flex-1" required />
+              <input type="text"  name="nom"     placeholder="Nom"      class="form-input flex-1" required />
+            </div>
+            <div class="flex gap-4">
+              <input type="tel"   name="phone"   placeholder="Téléphone" class="form-input flex-1" />
+              <input type="text"  name="sujet"   placeholder="Sujet"    class="form-input flex-1" required />
+            </div>
+            <input   type="email" name="email"   placeholder="Email"    class="form-input" required />
+            <textarea name="message" placeholder="Votre message..." rows="5" class="form-input resize-none" required></textarea>
+            <button type="submit" class="btn-primary w-full justify-center">
+              <i class="fas fa-paper-plane mr-2"></i>Envoyer le message
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-[#212435] py-6 text-center text-gray-500 text-sm">
+    <p>© 2025 <span class="text-cyan-400 font-semibold">IT-TALIKO</span> · Mouhamadou SAMAKE. Tous droits réservés.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
