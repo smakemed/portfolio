@@ -97,21 +97,45 @@ const skillObserver = new IntersectionObserver((entries) => {
 const skillsSection = document.getElementById('skills');
 if (skillsSection) skillObserver.observe(skillsSection);
 
-// ===== CONTACT FORM =====
+// ===== CONTACT FORM (Formspree) =====
 const form = document.getElementById('contact-form');
 if (form) {
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    btn.innerHTML = '<i class="fas fa-check mr-2"></i>Message envoyé !';
-    btn.style.background = '#00b894';
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Envoi en cours...';
     btn.disabled = true;
-    setTimeout(() => {
-      btn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Envoyer le message';
-      btn.style.background = '';
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        btn.innerHTML = '<i class="fas fa-check mr-2"></i>Message envoyé !';
+        btn.style.background = '#00b894';
+        form.reset();
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Envoyer le message';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      } else {
+        throw new Error('Erreur serveur');
+      }
+    } catch {
+      btn.innerHTML = '<i class="fas fa-times mr-2"></i>Erreur, réessayez';
+      btn.style.background = '#e74c3c';
       btn.disabled = false;
-      form.reset();
-    }, 3000);
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Envoyer le message';
+        btn.style.background = '';
+      }, 3000);
+    }
   });
 }
 
