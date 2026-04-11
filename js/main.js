@@ -42,6 +42,8 @@ const roles = [
   'Expert Spring Boot',
   'Architecte API REST',
   'Auto-Entrepreneur IT-TALIKO',
+  'Développeur Full Stack',
+  'Expert Microservices',
 ];
 let roleIndex = 0;
 let charIndex = 0;
