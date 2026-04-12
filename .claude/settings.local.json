@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -iE \"\\\\.\\(jpg|jpeg|png|webp|gif\\)$\")",
+      "Bash(ls d:/portfolio_samake/*.jpg d:/portfolio_samake/*.jpeg d:/portfolio_samake/*.png)",
+      "Bash(git config:*)"
+    ],
+    "additionalDirectories": [
+      "d:\\portfolio_samake",
+      "d:\\goodmoodFolio"
+    ]
+  }
+}

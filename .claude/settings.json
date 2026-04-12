@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//d/goodmoodFolio/**)",
+      "Bash(ls d:/goodmoodFolio/*.jpg d:/goodmoodFolio/*.jpeg d:/goodmoodFolio/*.png)",
+      "Bash(ls d:/goodmoodFolio/*.jpeg d:/goodmoodFolio/*.jpg)"
+    ],
+    "additionalDirectories": [
+      "d:\\goodmoodFolio"
+    ]
+  }
+}
