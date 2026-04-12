@@ -1,3 +1,59 @@
+// ===== LOADER =====
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  setTimeout(() => loader.classList.add('hidden'), 1500);
+});
+
+// ===== CUSTOM CURSOR =====
+const cursor = document.getElementById('cursor');
+const follower = document.getElementById('cursor-follower');
+let mouseX = 0, mouseY = 0;
+let followerX = 0, followerY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX + 'px';
+  cursor.style.top  = mouseY + 'px';
+});
+
+(function animateFollower() {
+  followerX += (mouseX - followerX) * 0.12;
+  followerY += (mouseY - followerY) * 0.12;
+  follower.style.left = followerX + 'px';
+  follower.style.top  = followerY + 'px';
+  requestAnimationFrame(animateFollower);
+})();
+
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(2)';
+    follower.style.transform = 'translate(-50%,-50%) scale(1.5)';
+    follower.style.borderColor = '#00d4d8';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+    follower.style.transform = 'translate(-50%,-50%) scale(1)';
+  });
+});
+
+// ===== SCROLL PROGRESS BAR =====
+const progressBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  const progress = (window.scrollY / total) * 100;
+  progressBar.style.width = progress + '%';
+});
+
+// ===== SCROLL TO TOP =====
+const scrollTopBtn = document.getElementById('scroll-top');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+});
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 // ===== NAVBAR SCROLL =====
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -11,7 +67,6 @@ burger.addEventListener('click', () => {
   mobileMenu.classList.toggle('hidden');
 });
 
-// Fermer le menu mobile au clic sur un lien
 mobileMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
 });
@@ -34,6 +89,65 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sections.forEach(section => observer.observe(section));
+
+// ===== PARTICLES =====
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function createParticle() {
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2 + 0.5,
+    dx: (Math.random() - 0.5) * 0.4,
+    dy: (Math.random() - 0.5) * 0.4,
+    alpha: Math.random() * 0.5 + 0.2,
+  };
+}
+
+for (let i = 0; i < 80; i++) particles.push(createParticle());
+
+function drawParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(0,212,216,${p.alpha})`;
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+
+  // Lignes entre particules proches
+  particles.forEach((p, i) => {
+    particles.slice(i + 1).forEach(q => {
+      const dist = Math.hypot(p.x - q.x, p.y - q.y);
+      if (dist < 100) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(q.x, q.y);
+        ctx.strokeStyle = `rgba(0,212,216,${0.12 * (1 - dist / 100)})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    });
+  });
+
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
 
 // ===== TYPED EFFECT =====
 const typedEl = document.querySelector('.typed-text');
@@ -60,8 +174,7 @@ function type() {
   let speed = isDeleting ? 60 : 100;
 
   if (!isDeleting && charIndex > current.length) {
-    speed = 1800;
-    isDeleting = true;
+    speed = 1800; isDeleting = true;
   } else if (isDeleting && charIndex < 0) {
     isDeleting = false;
     roleIndex = (roleIndex + 1) % roles.length;
@@ -71,6 +184,29 @@ function type() {
   setTimeout(type, speed);
 }
 type();
+
+// ===== STATS COUNTER =====
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.stat-number').forEach(el => {
+        const target = +el.dataset.target;
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) { current = target; clearInterval(timer); }
+          el.textContent = Math.floor(current);
+        }, 16);
+      });
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+const statsSection = document.querySelector('.stat-item')?.closest('section');
+if (statsSection) statsObserver.observe(statsSection);
 
 // ===== TABS (About) =====
 const tabBtns = document.querySelectorAll('.tab-btn');
@@ -127,7 +263,7 @@ if (form) {
           btn.disabled = false;
         }, 4000);
       } else {
-        throw new Error('Erreur serveur');
+        throw new Error();
       }
     } catch {
       btn.innerHTML = '<i class="fas fa-times mr-2"></i>Erreur, réessayez';
@@ -142,10 +278,10 @@ if (form) {
 }
 
 // ===== SCROLL REVEAL =====
-const revealElements = document.querySelectorAll('.service-card, .project-card, .skill-item, .timeline-item');
+const revealElements = document.querySelectorAll('.service-card, .project-card, .skill-item, .timeline-item, .stat-item, .cert-card');
 
 const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = '0';
       entry.target.style.transform = 'translateY(30px)';

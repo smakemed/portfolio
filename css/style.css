@@ -1,6 +1,110 @@
 /* ===== BASE ===== */
 * { scroll-behavior: smooth; }
 
+/* ===== CURSOR ===== */
+#cursor {
+  width: 10px; height: 10px;
+  background: #00d4d8;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s;
+}
+
+#cursor-follower {
+  width: 36px; height: 36px;
+  border: 2px solid rgba(0,212,216,0.5);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease;
+}
+
+body:hover #cursor { opacity: 1; }
+
+/* ===== LOADER ===== */
+#loader {
+  position: fixed; inset: 0;
+  background: #1a1d2e;
+  z-index: 99999;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+#loader.hidden { opacity: 0; visibility: hidden; }
+
+.loader-content { text-align: center; }
+
+.loader-bar {
+  width: 200px; height: 3px;
+  background: rgba(0,212,216,0.2);
+  border-radius: 50px;
+  margin: 1.5rem auto 0;
+  overflow: hidden;
+}
+
+.loader-fill {
+  height: 100%;
+  background: #00d4d8;
+  border-radius: 50px;
+  animation: loading 1.5s ease forwards;
+}
+
+@keyframes loading {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+/* ===== SCROLL PROGRESS ===== */
+#scroll-progress {
+  position: fixed; top: 0; left: 0;
+  height: 3px; width: 0%;
+  background: linear-gradient(90deg, #00d4d8, #00f5a0);
+  z-index: 9999;
+  transition: width 0.1s;
+}
+
+/* ===== SCROLL TO TOP ===== */
+#scroll-top {
+  position: fixed; bottom: 2rem; right: 2rem;
+  width: 46px; height: 46px;
+  background: #00d4d8; color: #1a1d2e;
+  border: none; border-radius: 50%;
+  font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: all 0.3s;
+  z-index: 999;
+  box-shadow: 0 4px 20px rgba(0,212,216,0.4);
+}
+
+#scroll-top.visible { opacity: 1; visibility: visible; }
+#scroll-top:hover { transform: translateY(-4px); background: #00f5a0; }
+
+/* ===== STATS ===== */
+.stat-item {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 1.5rem;
+  border: 1px solid rgba(0,212,216,0.1);
+  border-radius: 16px;
+  background: rgba(0,212,216,0.03);
+  transition: all 0.3s;
+}
+
+.stat-item:hover {
+  border-color: #00d4d8;
+  box-shadow: 0 0 20px rgba(0,212,216,0.1);
+}
+
+.stat-number {
+  font-size: 3rem; font-weight: 900;
+  color: #00d4d8; line-height: 1;
+}
+
 ::selection {
   background: #00d4d8;
   color: #1a1d2e;
@@ -261,8 +365,10 @@
 
 /* ===== SERVICES ===== */
 .service-card {
-  background: #212435;
-  border: 1px solid rgba(0,212,216,0.1);
+  background: rgba(33,36,53,0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,212,216,0.15);
   border-radius: 20px;
   padding: 2.5rem 2rem;
   text-align: center;
@@ -330,10 +436,12 @@
 
 /* ===== PORTFOLIO ===== */
 .project-card {
-  background: #1a1d2e;
+  background: rgba(26,29,46,0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(0,212,216,0.1);
+  border: 1px solid rgba(0,212,216,0.12);
   transition: all 0.3s;
 }
 
